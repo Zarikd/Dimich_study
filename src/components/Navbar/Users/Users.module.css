@@ -1,0 +1,15 @@
+.Users {
+    width: 600px;
+    height: 300px;
+    border: 1px solid rgb(184, 49, 78);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar {
+    width: 70px;
+    height: 100px;
+}
+

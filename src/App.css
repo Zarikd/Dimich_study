@@ -1,0 +1,35 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+  border: 1px solid black;
+  width: 800px;
+  height: 800px;
+  margin: auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.app-wrapper-content {
+  grid-column: 1/4;
+}
+
+
+
+.FwdLeft, .FwdCenter, .FwdRight {
+  grid-row: 4;
+}
+
+
+.DefLeft {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.DefRight {
+  grid-column: 3;
+  grid-row: 5;
+}
+

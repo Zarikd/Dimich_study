@@ -1,0 +1,10 @@
+.Contacts {
+    width: 300px;
+    height: 150px;
+    border: 1px solid rgb(184, 49, 78);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
