@@ -12,3 +12,10 @@
     height: 100px;
 }
 
+.Navigation {
+    grid-column: 1/4;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
