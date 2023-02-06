@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Contacts from './components/Navbar/Contacts/Contacts';
 import Main from './components/Navbar/Main/Main';
 import Navbar from './components/Navbar/Navbar';
+import ProfileContainer from './components/Navbar/Profile/ProfileContainer';
 import TeamContainer from './components/Navbar/Team/TeamContainer';
 import UsersContainer from './components/Navbar/Users/UsersContainer';
 
@@ -28,6 +29,8 @@ function App(props) {
             />} />
           <Route path='/Users'
             element={<UsersContainer />} />
+          <Route path='/Profile/*'
+            element={<ProfileContainer />} />
         </Routes>
       </div>
     </div >
