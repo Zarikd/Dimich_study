@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink, Routes } from 'react-router-dom';
 
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Contacts from './components/Navbar/Contacts/Contacts';
 import Main from './components/Navbar/Main/Main';
 import Navbar from './components/Navbar/Navbar';
@@ -15,7 +15,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className='app-wrapper-content'>
         <Routes>
@@ -29,7 +29,7 @@ function App(props) {
             />} />
           <Route path='/Users'
             element={<UsersContainer />} />
-          <Route path='/Profile/*'
+          <Route path='/Profile/:userId?'
             element={<ProfileContainer />} />
         </Routes>
       </div>

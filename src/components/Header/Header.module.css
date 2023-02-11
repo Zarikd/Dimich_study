@@ -6,7 +6,13 @@
     grid-column: 1/4;
     grid-row: 1;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
+    background-color: rgb(20, 117, 114);
+}
+
+.loginBlock a {
+    color: white;
+    text-decoration: solid;
 }
 
