@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, } from 'react-router-dom';
 import s from './Profile.module.css'
 import userPhoto from '../../../assets/images/User.jpg'
 import Preloader from '../../common/preloader/Preloader';
@@ -10,6 +10,8 @@ let Profile = (props) => {
         let newText = e.target.value;
         props.updateNewText(newText);
     };
+
+   
 
     if (!props.profile) {
         return <Preloader />

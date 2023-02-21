@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, NavLink, Routes } from 'react-r
 
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/login/Login';
 import Contacts from './components/Navbar/Contacts/Contacts';
 import Main from './components/Navbar/Main/Main';
 import Navbar from './components/Navbar/Navbar';
@@ -31,6 +32,8 @@ function App(props) {
             element={<UsersContainer />} />
           <Route path='/Profile/:userId?'
             element={<ProfileContainer />} />
+             <Route path='/Login'
+            element={<Login />} />
         </Routes>
       </div>
     </div >

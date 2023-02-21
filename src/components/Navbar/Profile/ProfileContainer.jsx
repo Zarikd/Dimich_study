@@ -1,15 +1,15 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { setUserProfile, toggleIsFetching, updateNewText, addNewPost } from '../../../redux/Profile-reducer';
+import { setUserProfile, toggleIsFetching, updateNewText, addNewPost, getUserProfile } from '../../../redux/Profile-reducer';
 
-import Preloader from '../../common/preloader/Preloader';
 import Profile from './Profile';
+import { withAuthNavigate } from '../../../hoc/AuthNavigate';
 
 
 const ProfileContainer = (props) => {
+    // debugger
     const params = useParams();
     if (!params.userId) {
         params.userId = 2
@@ -21,12 +21,17 @@ const ProfileContainer = (props) => {
     //         props.setUserProfile(response.data);
     //     })
     // }, [params.userId]) both correct but this propmise which is not really good
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${params.userId}`)
+    //         props.setUserProfile(response.data);
+    //     })()
+    // }, [params.userId]) I don't know how create thunk and API with function async, need search information
+
     useEffect(() => {
-        (async () => {
-            const response = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${params.userId}`)
-            props.setUserProfile(response.data);
-        })()
+        props.getUserProfile(params.userId)
     }, [params.userId])
+
     return <Profile  {...props} />
 }
 
@@ -53,12 +58,24 @@ const ProfileContainer = (props) => {
 // }
 
 
+let AuthNavigateComponent = withAuthNavigate(ProfileContainer)
+
+// (props) => {
+
+//     if (!props.isAuth) {
+//         return <Navigate to='/Login' /> 
+//      }
+ 
+//     return <ProfileContainer {...props} />
+// }
+
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         posts: state.profilePage.posts,
         isFetching: state.profilePage.isFetching,
         newText: state.profilePage.newText,
+        // isAuth: state.auth.isAuth,
     }
 };
 
@@ -67,5 +84,6 @@ export default connect(mapStateToProps, {
     toggleIsFetching,
     updateNewText,
     addNewPost,
-})(ProfileContainer);
+    getUserProfile
+})(AuthNavigateComponent);
 

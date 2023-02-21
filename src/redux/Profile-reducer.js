@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const UPDATE_NEW_TEXT = 'UPDATE-NEW-TEXT';
 const ADD_NEW_POST = 'ADD_NEW_POST';
@@ -43,6 +45,12 @@ export const addNewPost = () => ({ type: ADD_NEW_POST });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 
-
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        usersAPI.getUserProfile(userId).then(response => {
+            dispatch(setUserProfile(response.data));
+        })
+    }
+}
 
 export default profileReducer;
