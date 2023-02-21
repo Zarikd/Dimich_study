@@ -6,6 +6,7 @@ import { setUserProfile, toggleIsFetching, updateNewText, addNewPost, getUserPro
 
 import Profile from './Profile';
 import { withAuthNavigate } from '../../../hoc/AuthNavigate';
+import { compose } from 'redux';
 
 
 const ProfileContainer = (props) => {
@@ -57,18 +58,6 @@ const ProfileContainer = (props) => {
 //     }
 // }
 
-
-let AuthNavigateComponent = withAuthNavigate(ProfileContainer)
-
-// (props) => {
-
-//     if (!props.isAuth) {
-//         return <Navigate to='/Login' /> 
-//      }
- 
-//     return <ProfileContainer {...props} />
-// }
-
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
@@ -79,11 +68,34 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {
-    setUserProfile,
-    toggleIsFetching,
-    updateNewText,
-    addNewPost,
-    getUserProfile
-})(AuthNavigateComponent);
+export default compose(
+    connect(mapStateToProps, {
+        setUserProfile,
+        toggleIsFetching,
+        updateNewText,
+        addNewPost,
+        getUserProfile
+    }),
+    withAuthNavigate
+)(ProfileContainer)
+
+// let AuthNavigateComponent = withAuthNavigate(ProfileContainer)
+
+// (props) => {
+
+//     if (!props.isAuth) {
+//         return <Navigate to='/Login' /> 
+//      }
+ 
+//     return <ProfileContainer {...props} />
+// }
+
+
+// export default connect(mapStateToProps, {
+//     setUserProfile,
+//     toggleIsFetching,
+//     updateNewText,
+//     addNewPost,
+//     getUserProfile
+// })(AuthNavigateComponent);
 
