@@ -2,7 +2,8 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setUserProfile, toggleIsFetching, updateNewText, addNewPost, getUserProfile } from '../../../redux/Profile-reducer';
+import { setUserProfile, toggleIsFetching, updateNewText, addNewPost, 
+    getUserProfile, getUserStatus, updateStatus } from '../../../redux/Profile-reducer';
 
 import Profile from './Profile';
 import { withAuthNavigate } from '../../../hoc/AuthNavigate';
@@ -13,7 +14,8 @@ const ProfileContainer = (props) => {
     // debugger
     const params = useParams();
     if (!params.userId) {
-        params.userId = 2
+        // params.userId = 2
+        params.userId = 27418
     }
     // debugger
 
@@ -31,7 +33,9 @@ const ProfileContainer = (props) => {
 
     useEffect(() => {
         props.getUserProfile(params.userId)
+        props.getUserStatus(params.userId)
     }, [params.userId])
+
 
     return <Profile  {...props} />
 }
@@ -64,6 +68,7 @@ let mapStateToProps = (state) => {
         posts: state.profilePage.posts,
         isFetching: state.profilePage.isFetching,
         newText: state.profilePage.newText,
+        status: state.profilePage.status
         // isAuth: state.auth.isAuth,
     }
 };
@@ -74,7 +79,9 @@ export default compose(
         toggleIsFetching,
         updateNewText,
         addNewPost,
-        getUserProfile
+        getUserProfile,
+        getUserStatus,
+        updateStatus,
     }),
     withAuthNavigate
 )(ProfileContainer)
