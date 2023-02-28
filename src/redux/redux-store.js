@@ -4,12 +4,14 @@ import playersReducer from './Players-reducer';
 import profileReducer from "./Profile-reducer";
 import usersReducer from "./Users-reducer";
 import thunkMiddleware from 'redux-thunk'
+import { reducer as formReducer } from 'redux-form'
 
 let reducers = combineReducers({
    playersPage: playersReducer,
    usersPage: usersReducer,
    profilePage: profileReducer,
-   auth: authReducer
+   auth: authReducer,
+   form: formReducer
 }
 );
 
