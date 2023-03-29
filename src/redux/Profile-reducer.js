@@ -1,7 +1,6 @@
 import { profileAPI } from "../api/api";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const UPDATE_NEW_TEXT = 'UPDATE-NEW-TEXT';
 const ADD_NEW_POST = 'ADD_NEW_POST';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const SET_USER_STATUS = 'SET_USER_STATUS'
@@ -19,18 +18,11 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile }
-        case UPDATE_NEW_TEXT: {
-            return {
-                ...state,
-                newText: action.newText
-            }
-        }
         case ADD_NEW_POST: {
-            let newPost = state.newText
+            // let newPost = state.newText
             return {
                 ...state,
-                posts: [...state.posts, newPost],
-                newText: ''
+                posts: [...state.posts, action.newPost],
             }
         }
         case TOGGLE_IS_FETCHING:
@@ -44,8 +36,7 @@ const profileReducer = (state = initialState, action) => {
 };
 
 
-export const updateNewText = (newText) => ({ type: UPDATE_NEW_TEXT, newText });
-export const addNewPost = () => ({ type: ADD_NEW_POST });
+export const addNewPost = (newPost) => ({ type: ADD_NEW_POST, newPost });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })

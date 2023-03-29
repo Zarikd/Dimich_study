@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setUserProfile, toggleIsFetching, updateNewText, addNewPost, 
+import { setUserProfile, toggleIsFetching, addNewPost, 
     getUserProfile, getUserStatus, updateStatus } from '../../../redux/Profile-reducer';
 
 import Profile from './Profile';
@@ -77,7 +77,6 @@ export default compose(
     connect(mapStateToProps, {
         setUserProfile,
         toggleIsFetching,
-        updateNewText,
         addNewPost,
         getUserProfile,
         getUserStatus,
