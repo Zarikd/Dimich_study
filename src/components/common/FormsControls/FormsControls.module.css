@@ -8,3 +8,9 @@
 {
     color: red;
 }
+
+.formSummaryError {
+    border: red 2px solid;
+    padding: 5px;
+    color: rgba(215, 61, 61, 0.427);
+}

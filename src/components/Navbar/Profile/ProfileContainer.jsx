@@ -15,7 +15,7 @@ const ProfileContainer = (props) => {
     const params = useParams();
     if (!params.userId) {
         // params.userId = 2
-        params.userId = 27418
+        params.userId = props.autorizedUserId
     }
     // debugger
 
@@ -68,8 +68,9 @@ let mapStateToProps = (state) => {
         posts: state.profilePage.posts,
         isFetching: state.profilePage.isFetching,
         newText: state.profilePage.newText,
-        status: state.profilePage.status
-        // isAuth: state.auth.isAuth,
+        status: state.profilePage.status,
+        autorizedUserId: state.auth.userId,
+        isAuth: state.auth.isAuth,
     }
 };
 

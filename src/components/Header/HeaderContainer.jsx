@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout, makeAuth } from '../../redux/auth-reducer';
+import { logout } from '../../redux/auth-reducer';
 import Header from './Header';
 
 class HeaderContainer extends React.Component {
 
-    componentDidMount () {
-        this.props.makeAuth()
+    
         // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, 
         // {withCredentials: true})
         // usersAPI.setAuthMe()
@@ -17,7 +16,7 @@ class HeaderContainer extends React.Component {
                 
         //     }
         // }) thunk and API replace all this code
-    }
+    
 
     render () {
         return <Header {...this.props} />
@@ -29,4 +28,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login,
 })
 
-export default connect(mapStateToProps, {makeAuth, logout})(HeaderContainer);
+export default connect(mapStateToProps, {logout})(HeaderContainer);
